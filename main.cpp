@@ -1,12 +1,13 @@
 #include <iostream>
 #include "day10.h"
+#include "day14.h"
 
 int main() {
-    // day10
+// Day 10 ----------------------------------------------------------------------------------------------
 //    ifstream file("../input_day10.txt");
 //
 //    if (!file.is_open()) {      // checking if file is open
-//        cerr << "Error opening file." << std::endl;
+//        cout << "Error opening file." << std::endl;
 //        return 1; // Return an error code
 //    }
 //
@@ -20,7 +21,9 @@ int main() {
 //    syntaxChecker(navSys);
 //    syntaxChecker(navSubsystems);
 
-    //day14
-
-
+// Day 14 ----------------------------------------------------------------------------------------------
+    Polymer day14Polymer;
+    parser(&day14Polymer);
+    pairInsertions(&day14Polymer, 10);
+    cout << scoreCounter(&day14Polymer) << endl;
 }
