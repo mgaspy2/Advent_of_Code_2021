@@ -57,8 +57,7 @@ void pairInsertions(Polymer *polymer, int num) {
 // function for counting score of polymer
 int scoreCounter(Polymer *polymer) {
     for (auto letter: polymer->polymerName) {       // loop for counting score of polymer
-        if (polymer->scoreMap.find(string(1, letter)) !=
-            polymer->scoreMap.end()) {     // checking if letter is in score map
+        if (polymer->scoreMap.find(string(1, letter)) != polymer->scoreMap.end()) {     // checking if letter is in score map
             polymer->scoreMap[string(1, letter)]++;     // if it is, incrementing score
         } else {
             polymer->scoreMap.insert(
