@@ -1,3 +1,4 @@
+#include <iostream>
 #include "day17.h"
 
 // assignment: https://adventofcode.com/2021/day/17

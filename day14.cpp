@@ -1,3 +1,10 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <stack>
+#include <map>
+#include <limits>
 #include "day14.h"
 
 // assignment: https://adventofcode.com/2021/day/14

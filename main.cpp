@@ -1,4 +1,3 @@
-#include <iostream>
 #include "day10.h"
 #include "day14.h"
 #include "day17.h"

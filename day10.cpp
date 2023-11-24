@@ -1,3 +1,5 @@
+#include <iostream>
+#include <fstream>
 #include "day10.h"
 
 // assignment: https://adventofcode.com/2021/day/10

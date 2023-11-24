@@ -1,10 +1,6 @@
 #ifndef ADVENT_OF_CODE_2021_DAY17_H
 #define ADVENT_OF_CODE_2021_DAY17_H
 
-#include <iostream>
-#include <vector>
-#include <queue>
-
 using namespace std;
 
 struct Area {       // struct for storing the area of the target

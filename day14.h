@@ -1,14 +1,6 @@
 #ifndef ADVENT_OF_CODE_2021_DAY14_H
 #define ADVENT_OF_CODE_2021_DAY14_H
 
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <vector>
-#include <stack>
-#include <map>
-#include <limits>
-
 using namespace std;
 
 class Polymer {     // class for storing polymer name, insertion rules and score map
