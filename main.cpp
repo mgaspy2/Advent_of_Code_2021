@@ -4,20 +4,25 @@
 
 int main() {
 // Day 10: Syntax Scoring ----------------------------------------------------------------------------------------------
-//    vector<string> navSys;
-//    parser(&navSys);
-//    syntaxChecker(navSys);
+    vector<string> navSys;
+    parser(&navSys);
+    syntaxChecker(navSys);
 
 // Day 14: Extended Polymerization -------------------------------------------------------------------------------------
-//    Polymer day14Polymer;
-//    parser(&day14Polymer);
-//    pairInsertions(&day14Polymer, 10);
-//    scoreCounter(&day14Polymer);
+    Polymer day14Polymer;
+    parser(&day14Polymer);
+    pairInsertions(&day14Polymer, 10);
+    scoreCounter(&day14Polymer);
+//    print(&day14Polymer);
 
 // Day 17: Trick Shot --------------------------------------------------------------------------------------------------
     Area day17Area(150,193,-136,-86);
     Probe probe;
     probe.automaticLaunch(day17Area);
+//    probe.print();
+
+// Day 1X --------------------------------------------------------------------------------------------------------------
+
 
 // ---------------------------------------------------------------------------------------------------------------------
     return 0;

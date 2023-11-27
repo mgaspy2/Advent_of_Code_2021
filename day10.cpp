@@ -4,20 +4,6 @@
 
 // assignment: https://adventofcode.com/2021/day/10
 
-// navigation subsystem (testing data)
-vector<string> navSubsystems = {
-        "[({(<(())[]>[[{[]{<()<>>",
-        "[(()[<>])]({[<{<<[]>>(",
-        "{([(<{}[<>[]}>{[]{[(<()>",
-        "(((({<>}<{<{<>}{[]{[]{}",
-        "[[<[([]))<([[{}[[()]]]",
-        "[{[{({}]{}}([{[{{{}}([]",
-        "{<[[]]>}<{[{[{[]{()[[[]",
-        "[<(<(<(<{}))><([]([]()",
-        "<{([([[(<>()){}]>(<<{{",
-        "<{([{{}}[<[[[<>{}]]]>[]]"
-};
-
 // score map for syntax checker score
 map<char, int> scoreMap = {
         {')', 3},
@@ -56,7 +42,6 @@ void print(string chunk, int i, stack<char> chunkStack) {
 // function for checking if chunk is legal
 int chunkCheck(string chunk) {
     stack<char> chunkStack;     // stack for storing opening brackets
-    bool illegalChunk = false;      // flag for checking if chunk is illegal
     int score = 0;
 
     if (chunk[0] == ')' || chunk[0] == ']' || chunk[0] == '}' ||
@@ -80,22 +65,18 @@ int chunkCheck(string chunk) {
                 chunkStack.pop();
             else {
                 if (chunk[i] == ')' && chunkStack.top() != '(') {
-                    illegalChunk = true;        // if current char is not correct closing bracket, chunk is flagged as illegal
 //                    print(chunk, i, chunkStack);       // printing error message
                     score = scoreMap[chunk[i]];        // getting score for illegal chunk
                     break;
                 } else if (chunk[i] == ']' && chunkStack.top() != '[') {
-                    illegalChunk = true;
 //                    print(chunk, i, chunkStack);
                     score = scoreMap[chunk[i]];
                     break;
                 } else if (chunk[i] == '}' && chunkStack.top() != '{') {
-                    illegalChunk = true;
 //                    print(chunk, i, chunkStack);
                     score = scoreMap[chunk[i]];
                     break;
                 } else if (chunk[i] == '>' && chunkStack.top() != '<') {
-                    illegalChunk = true;
 //                    print(chunk, i, chunkStack);
                     score = scoreMap[chunk[i]];
                     break;
@@ -104,23 +85,16 @@ int chunkCheck(string chunk) {
             }
         }
     }
-
-//    if (chunk.length() % 2 != 0)        // checking if chunk is incomplete
-//        cout << "Incomplete chunk" << endl;
-//    if (illegalChunk) {     // checking if chunk is flagged as illegal
-//        cout << "Illegal chunk \n" << endl;
-//    } else {
-//        cout << "Legal chunk \n" << endl;
-//    }
     return score;       // returning score for chunk
 }
 
 // function for checking syntax of navigation subsystem
-int syntaxChecker(vector<string> navSubsys) {
+int syntaxChecker(vector<string> navSubsystem) {
     int score = 0;
-    for (string sys: navSubsys) {     // simple loop for going through all lines in navSubsystems
+    for (string sys: navSubsystem) {     // simple loop for going through all lines in navSubsystems
         score += chunkCheck(sys);       // adding score for each line to total score
     }
     cout << "Day 10 score: " << score << endl;     // printing total score
+    cout << endl;
     return score;       // returning total score
 }

@@ -21,10 +21,6 @@ void parser(Polymer *polymer) {
         }
     }
     file.close();
-
-//    cout << polymer->polymerName << endl;
-//    for (auto &rule : polymer->insertionRules)
-//        cout << rule.first << "   " << rule.second << endl;
 }
 
 // function for inserting pairs into polymer
@@ -36,11 +32,10 @@ void pairInsertion(Polymer *polymer) {
         if (polymerStack.empty()) {
             polymerStack.push(polymer->polymerName[i]);     // if stack is empty, pushing first char to stack
         } else {
-            string pair = "";
+            string pair;
             pair += polymerStack.top();
-            pair += polymer->polymerName[i];        // creating pair of chars
-            if (polymer->insertionRules.find(pair) !=
-                polymer->insertionRules.end()) {      // checking if pair is in insertion rules
+            pair += polymer->polymerName[i];        // inserting chars from stack and current char into string for checking if pair is in insertion rules
+            if (polymer->insertionRules.find(pair) != polymer->insertionRules.end()) {      // checking if pair is in insertion rules
                 newPolymer += polymerStack.top();
                 newPolymer += polymer->insertionRules[pair];        // if it is, inserting first char from pair and value from map
                 polymerStack.pop();
@@ -48,10 +43,8 @@ void pairInsertion(Polymer *polymer) {
             }
         }
     }
-
     newPolymer += polymerStack.top();       // adding last char from stack to new polymer
     polymer->polymerName = newPolymer;      // overwriting polymer name with new polymer
-
 }
 
 // function for inserting pairs into polymer multiple times
@@ -67,15 +60,11 @@ int scoreCounter(Polymer *polymer) {
         if (polymer->scoreMap.find(string(1, letter)) != polymer->scoreMap.end()) {     // checking if letter is in score map
             polymer->scoreMap[string(1, letter)]++;     // if it is, incrementing score
         } else {
-            polymer->scoreMap.insert(
-                    pair<string, int>(string(1, letter), 1));      // if it is not, inserting letter into score map
+            polymer->scoreMap.insert(pair<string, int>(string(1, letter), 1));      // if it is not, inserting letter into score map
         }
     }
 
-//    for (auto &rule: polymer->scoreMap)
-//        cout << rule.first << "   " << rule.second << endl;       // printing score map
-
-    int highestValue = -1, lowestValue = numeric_limits<int>::max(), score = 0;
+    int highestValue = -1, lowestValue = numeric_limits<int>::max();
     for (auto entry: polymer->scoreMap) {       // loop for finding highest and lowest value in score map
         if (entry.second > highestValue) {
             highestValue = entry.second;
@@ -84,7 +73,26 @@ int scoreCounter(Polymer *polymer) {
         }
     }
 
-    score = highestValue - lowestValue;
-    cout << "Day 14 score: " << score << endl;     // printing score
-    return score;
+    polymer->score = highestValue - lowestValue;
+    cout << "Day 14 score: " << polymer->score << endl;     // printing score
+    cout << endl;
+    return polymer->score;
+}
+
+// print function for displaying polymer information
+void print(Polymer *polymer) {
+    cout << "Polymer name: " << polymer ->polymerName << "\n" << endl;
+    cout << "Insertion rules: " << endl;
+    for (auto &rule : polymer->insertionRules)
+        cout << rule.first << "   " << rule.second << endl;
+
+    if(!polymer->scoreMap.empty()){
+        for (auto &rule: polymer->scoreMap)
+            cout << rule.first << " -> " << rule.second << endl;       // printing score map
+        cout << endl;
+    }
+
+    if(polymer->score != 0)
+        cout << "Score: " << polymer->score << endl;       // printing score
+    cout << endl;
 }

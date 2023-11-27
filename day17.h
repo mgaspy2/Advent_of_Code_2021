@@ -19,11 +19,14 @@ class Probe {       // class for storing the probe's telemetry
     int x_position = 0;
     int y_position = 0;
     int max_yPos = 0;
+    int highestScore = 0;
 
     bool launch(int, int, Area);
 
 public:
     int automaticLaunch(Area);
+
+    void print();
 };
 
 #endif //ADVENT_OF_CODE_2021_DAY17_H
